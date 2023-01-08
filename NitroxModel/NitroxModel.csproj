@@ -1,7 +1,7 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
     <PropertyGroup>
-        <TargetFramework>net472</TargetFramework>
+        <TargetFramework>net7.0</TargetFramework>
         <Nullable>disable</Nullable>
     </PropertyGroup>
 
@@ -16,7 +16,6 @@
         <PackageReference Include="LiteNetLib" Version="0.8.3.1" />
         <PackageReference Include="Microsoft.Win32.Registry" Version="5.0.0" />
         <PackageReference Include="Mono.Nat" Version="3.0.2" />
-        <PackageReference Include="Nitrox.BinaryPack" Version="1.0.0" />
         <PackageReference Include="Serilog" Version="2.10.0" />
         <PackageReference Include="Serilog.Sinks.Async" Version="1.5.0" />
         <PackageReference Include="Serilog.Sinks.File" Version="5.0.0" />
@@ -26,6 +25,10 @@
         <PackageReference Include="System.IO.FileSystem.AccessControl" Version="5.0.0" />
         <PackageReference Include="System.Numerics.Vectors" Version="4.5.0" />
         <PackageReference Include="System.Runtime.CompilerServices.Unsafe" Version="6.0.0" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <ProjectReference Include="..\Nitrox.BinaryPack\src\BinaryPack\BinaryPack.csproj" />
     </ItemGroup>
 
     <ItemGroup>

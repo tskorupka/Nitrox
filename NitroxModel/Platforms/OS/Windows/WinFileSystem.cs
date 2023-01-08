@@ -8,6 +8,7 @@ using Microsoft.Win32;
 using NitroxModel.Platforms.OS.Shared;
 using NitroxModel.Platforms.OS.Windows.Internal;
 
+[assembly:SupportedOSPlatform("windows")]
 namespace NitroxModel.Platforms.OS.Windows
 {
     internal class WinFileSystem : FileSystem

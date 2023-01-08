@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Reflection;
+using System.Runtime.InteropServices;
 using NitroxModel.Discovery;
 using NitroxModel.Platforms.OS.Windows.Internal;
 using NitroxModel.Platforms.Store;
@@ -59,8 +60,26 @@ namespace NitroxModel.Helper
 
         public static string PreferredGamePath
         {
-            get => RegistryEx.Read<string>(PREFERRED_GAMEPATH_REGKEY);
-            set => RegistryEx.Write(PREFERRED_GAMEPATH_REGKEY, value);
+            get {
+                if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows)) {
+                    return RegistryEx.Read<string>(PREFERRED_GAMEPATH_REGKEY);
+                }
+
+                if (false == File.Exists(".config.txt")) {
+                    var stream = File.Create(".config.txt");
+                    stream.Close();
+                }
+
+                return File.ReadAllText(".config.txt");
+            }
+            set {
+                if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows)) {
+                    RegistryEx.Write(PREFERRED_GAMEPATH_REGKEY, value);
+                    return;
+                }
+
+                File.WriteAllText(".config.txt", value);
+            }
         }
 
         public static IGamePlatform GamePlatform { get; private set; }

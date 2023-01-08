@@ -3,8 +3,10 @@ using System.Diagnostics;
 using System.IO;
 using System.Reflection;
 using System.Threading.Tasks;
+using System.Runtime.InteropServices;
 using NitroxModel.Discovery;
 using NitroxModel.Helper;
+using System.Runtime.Versioning;
 
 namespace Nitrox.BuildTool
 {
@@ -50,40 +52,28 @@ namespace Nitrox.BuildTool
 
         private static GameInstallData EnsureGame()
         {
-            static bool ValidateUnityGame(GameInstallData game, out string error)
-            {
-                if (string.IsNullOrWhiteSpace(game.InstallDir))
-                {
-                    error = $"Path to game is not found: '{game.InstallDir}'";
-                    return false;
-                }
-                if (!File.Exists(Path.Combine(game.InstallDir, "UnityPlayer.dll")))
-                {
-                    error = $"Game at: '{game.InstallDir}' is not a Unity game";
-                    return false;
-                }
-                if (!Directory.Exists(game.ManagedDllsDir))
-                {
-                    error = $"Invalid Unity managed DLLs directory: {game.ManagedDllsDir}";
-                    return false;
-                }
-
-                error = null;
-                return true;
-            }
-
             string cacheFile = Path.Combine(GeneratedOutputDir, "game.props");
             if (GameInstallData.TryFrom(cacheFile, out GameInstallData game))
             {
                 // Retry if the saved path is invalid
-                if (!Directory.Exists(game.InstallDir))
+                if (false == Directory.Exists(game.InstallDir))
                 {
                     game = new GameInstallData(NitroxUser.GamePath);
                 }
 
-                if (!ValidateUnityGame(game, out string error))
+                if (string.IsNullOrWhiteSpace(game.InstallDir))
                 {
-                    throw new Exception(error);
+                    throw new UnableToValidateUnityGameException($"Path to game is not found: '{game.InstallDir}'");
+                }
+
+                if (false == File.Exists(Path.Combine(game.InstallDir, GetUnityPlayerFileName())))
+                {
+                    throw new UnableToValidateUnityGameException($"Game at: '{game.InstallDir}' is not a Unity game, did not find {GetUnityPlayerFileName()} in it.");
+                }
+
+                if (false == Directory.Exists(game.ManagedDllsDir))
+                {
+                    throw new UnableToValidateUnityGameException($"Invalid Unity managed DLLs directory: {game.ManagedDllsDir}");
                 }
             }
 
@@ -116,6 +106,15 @@ namespace Nitrox.BuildTool
                 throw;
             }
             Console.WriteLine($"Publicized {dllsToPublicize.Length} DLL(s) in {Math.Round(sw.Elapsed.TotalSeconds, 2)}s");
+        }
+
+        private static String GetUnityPlayerFileName()
+        {
+            if (RuntimeInformation.IsOSPlatform(OSPlatform.OSX)) {
+                return "UnityPlayer.dylib";
+            }
+
+            return "UnityPlayer.dll";
         }
     }
 }

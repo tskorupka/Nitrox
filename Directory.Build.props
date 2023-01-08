@@ -54,7 +54,7 @@
             </ItemGroup>
         </When>
     </Choose>
-    
+
     <!-- Include default project references to all other "Nitrox*" projects -->
     <Choose>
         <When Condition="'$(UnityModLibrary)' == 'true'">

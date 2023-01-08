@@ -4,11 +4,12 @@
         <!-- JetBrains Rider IDE does not analyze properly for this project if LangVersion is not set (it ignores Directory.Build.props) -->
         <LangVersion>$(LangVersion)</LangVersion>
         <OutputType>WinExe</OutputType>
-        <TargetFramework>net472</TargetFramework>
+        <TargetFramework>net7.0-windows</TargetFramework>
         <Nullable>disable</Nullable>
         <UseWPF>true</UseWPF>
         <ApplicationIcon>icon.ico</ApplicationIcon>
         <DisableFastUpToDateCheck>True</DisableFastUpToDateCheck>
+        <EnableWindowsTargeting>True</EnableWindowsTargeting>
     </PropertyGroup>
 
     <ItemGroup>

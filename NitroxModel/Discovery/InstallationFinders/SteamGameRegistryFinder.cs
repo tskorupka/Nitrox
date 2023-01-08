@@ -26,6 +26,11 @@ namespace NitroxModel.Discovery.InstallationFinders
                     errors?.Add("User HOME is not defined.");
                 }
             }
+            else if (RuntimeInformation.IsOSPlatform(OSPlatform.OSX)) {
+                string homePath = Environment.GetFolderPath(Environment.SpecialFolder.UserProfile);
+
+                steamPath = Path.Combine(homePath, "Library", "Application Support", "Steam");
+            }
             else
             {
                 steamPath = RegistryEx.Read<string>(@"Software\\Valve\\Steam\SteamPath");

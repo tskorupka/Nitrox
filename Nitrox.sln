@@ -14,8 +14,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SolutionFolder", "SolutionF
 		Directory.Build.targets = Directory.Build.targets
 	EndProjectSection
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NitroxLauncher", "NitroxLauncher\NitroxLauncher.csproj", "{59EB8953-864F-4147-A210-7FC97E1A5294}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NitroxPatcher", "NitroxPatcher\NitroxPatcher.csproj", "{39E377AD-2163-4428-952D-EBECD402C8F3}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NitroxModel-Subnautica", "NitroxModel-Subnautica\NitroxModel-Subnautica.csproj", "{47D774E0-750C-427B-8C38-F8F985114A2E}"
@@ -31,6 +29,8 @@ EndProject
 Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "Nitrox.Assets.Subnautica", "Nitrox.Assets.Subnautica\Nitrox.Assets.Subnautica.shproj", "{79E92B6D-5D25-4254-AC9F-FA9A1CD3CBC6}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Nitrox.Analyzers", "Nitrox.Analyzers\Nitrox.Analyzers.csproj", "{EB99BD64-EF43-4B06-BBFB-EB5DFA96E55D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NitroxLauncherV2", "NitroxLauncherV2\NitroxLauncherV2.csproj", "{459ABB46-D54A-41CA-9A1A-C26C9EC6EC3F}"
 EndProject
 Global
 	GlobalSection(SharedMSBuildProjectFiles) = preSolution
@@ -49,10 +49,6 @@ Global
 		{EBEBC7DC-FAE3-4FBC-BDD3-38ED8FC072D9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EBEBC7DC-FAE3-4FBC-BDD3-38ED8FC072D9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EBEBC7DC-FAE3-4FBC-BDD3-38ED8FC072D9}.Release|Any CPU.Build.0 = Release|Any CPU
-		{59EB8953-864F-4147-A210-7FC97E1A5294}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{59EB8953-864F-4147-A210-7FC97E1A5294}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{59EB8953-864F-4147-A210-7FC97E1A5294}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{59EB8953-864F-4147-A210-7FC97E1A5294}.Release|Any CPU.Build.0 = Release|Any CPU
 		{39E377AD-2163-4428-952D-EBECD402C8F3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{39E377AD-2163-4428-952D-EBECD402C8F3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{39E377AD-2163-4428-952D-EBECD402C8F3}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -81,6 +77,10 @@ Global
 		{EB99BD64-EF43-4B06-BBFB-EB5DFA96E55D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EB99BD64-EF43-4B06-BBFB-EB5DFA96E55D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EB99BD64-EF43-4B06-BBFB-EB5DFA96E55D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{459ABB46-D54A-41CA-9A1A-C26C9EC6EC3F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{459ABB46-D54A-41CA-9A1A-C26C9EC6EC3F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{459ABB46-D54A-41CA-9A1A-C26C9EC6EC3F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{459ABB46-D54A-41CA-9A1A-C26C9EC6EC3F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
